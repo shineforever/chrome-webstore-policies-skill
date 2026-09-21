@@ -1,4 +1,4 @@
-# Chrome Web Store 政策验证 Skill
+# Chrome Web Store Policies Skill
 
 按 [Chrome Web Store Program Policies](https://developer.chrome.com/docs/webstore/program-policies) 对扩展做上架前预审、拒审诊断和隐私字段核对。
 

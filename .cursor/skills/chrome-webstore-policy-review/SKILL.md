@@ -3,7 +3,7 @@ name: chrome-webstore-policy-review
 description: Use when reviewing a Chrome extension for Chrome Web Store submission, update, rejection, appeal, or policy compliance. Trigger on CWS program policies, store listing, privacy fields, permission justification, Manifest V3 remote code, single purpose, affiliate ads, or rejection IDs such as Blue Argon, Purple Potassium, Yellow Magnesium.
 ---
 
-# Chrome Web Store 政策验证
+# Chrome Web Store Policies Skill
 
 对用户自己的扩展做 **上架前预审 / 拒审诊断 / 申诉材料核对**。依据官方 Program Policies，不是猜测。
 
