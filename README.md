@@ -1,3 +1,5 @@
+**中文** | [English](README.en.md)
+
 # Chrome Web Store Policies Skill
 
 开源的 Chrome Web Store 政策验证 Skill。给 Cursor、Claude Code、Codex 等 Agent 用，对照 [Program Policies](https://developer.chrome.com/docs/webstore/program-policies) 做上架前预审、拒审诊断和隐私字段核对。
@@ -5,7 +7,8 @@
 政策单页版本：Last updated **2025-05-22**。以 [官方单页](https://developer.chrome.com/docs/webstore/program-policies/policies) 为准。本仓库每周核对一次官方来源；有变化会开 PR，不会在无人审核的情况下改 Skill 正文。
 
 仓库：https://github.com/shineforever/chrome-webstore-policies-skill  
-许可：[MIT](LICENSE)（不含官方政策快照，见文末）
+许可：[MIT](LICENSE)（不含官方政策快照，见文末）  
+作者：饭特稀 · [X/Twitter](https://x.com/fantexi997) · 微信 / 公众号见 [文末](#作者)
 
 ## 安装
 
@@ -184,3 +187,23 @@ npx skills add shineforever/chrome-webstore-policies-skill --agent cursor --agen
 Skill 文档、脚本、GitHub Actions 和检查清单使用 [MIT License](LICENSE)。
 
 [`sources/snapshots/`](sources/snapshots/) 来自 [Chrome for Developers](https://developer.chrome.com/docs/webstore/program-policies/policies) 官方文档，版权归 Google 及其关联方，**不在 MIT 授权范围内**。收录只为对照官方变更，使用以官方页面为准。说明见 [`sources/NOTICE`](sources/NOTICE)。
+
+## 作者
+
+独立开发者 [饭特稀](https://x.com/fantexi997)，写出海产品笔记。欢迎通过下面三个渠道交流。
+
+### X / Twitter
+
+[@fantexi997](https://x.com/fantexi997)
+
+### 个人微信
+
+微信号 `fantexi1996`，添加时请备注 **SiteData**。
+
+<img src="assets/wechat-personal.jpg" alt="饭特稀个人微信二维码" width="480">
+
+### 公众号
+
+微信扫码关注公众号。
+
+<img src="assets/wechat-official.jpg" alt="饭特稀公众号二维码" width="220">
