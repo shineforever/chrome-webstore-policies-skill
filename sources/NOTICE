@@ -1,0 +1,10 @@
+The files in snapshots/ are copies of Chrome Web Store documentation
+published by Google at developer.chrome.com. They are not licensed
+under this repository's MIT License. Copyright remains with Google
+and its affiliates.
+
+These snapshots exist only so this project can detect official
+policy changes. The live pages take precedence:
+
+https://developer.chrome.com/docs/webstore/program-policies/policies
+https://developer.chrome.com/docs/webstore/troubleshooting

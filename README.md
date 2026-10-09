@@ -4,7 +4,8 @@
 
 政策单页版本：Last updated **2025-05-22**。以 [官方单页](https://developer.chrome.com/docs/webstore/program-policies/policies) 为准。本仓库每周核对一次官方来源；有变化会开 PR，不会在无人审核的情况下改 Skill 正文。
 
-仓库：https://github.com/shineforever/chrome-webstore-policies-skill
+仓库：https://github.com/shineforever/chrome-webstore-policies-skill  
+许可：[MIT](LICENSE)（不含官方政策快照，见文末）
 
 ## 安装
 
@@ -177,3 +178,9 @@ npx skills add shineforever/chrome-webstore-policies-skill --agent cursor --agen
 ## 范围
 
 只用于开发者对自己产品的合规检查。不提供规避审核、伪装功能或绕过执行措施的做法。
+
+## 许可
+
+Skill 文档、脚本、GitHub Actions 和检查清单使用 [MIT License](LICENSE)。
+
+[`sources/snapshots/`](sources/snapshots/) 来自 [Chrome for Developers](https://developer.chrome.com/docs/webstore/program-policies/policies) 官方文档，版权归 Google 及其关联方，**不在 MIT 授权范围内**。收录只为对照官方变更，使用以官方页面为准。说明见 [`sources/NOTICE`](sources/NOTICE)。
