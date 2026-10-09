@@ -2,7 +2,7 @@
 
 开源的 Chrome Web Store 政策验证 Skill。给 Cursor、Claude Code、Codex 等 Agent 用，对照 [Program Policies](https://developer.chrome.com/docs/webstore/program-policies) 做上架前预审、拒审诊断和隐私字段核对。
 
-政策单页版本：Last updated **2025-05-22**。官方页面优先于本仓库。
+政策单页版本：Last updated **2025-05-22**。以 [官方单页](https://developer.chrome.com/docs/webstore/program-policies/policies) 为准。本仓库每周核对一次官方来源；有变化会开 PR，不会在无人审核的情况下改 Skill 正文。
 
 仓库：https://github.com/shineforever/chrome-webstore-policies-skill
 
@@ -82,10 +82,12 @@ cp -R .cursor/skills/chrome-webstore-policy-review \
 
 请提供将要提交的 **同一份包**（不要只给源码仓库根目录）。Chrome 上架包一般是构建产物，例如 `.output/chrome-mv3/`。
 
-本地可先跑静态扫描。扫描只标可疑点，**不是**最终结论：
+本地可先跑静态扫描。扫描只标可疑点，**不是**最终结论。有网时扫描开头会核对本 skill 的政策日期和官方 `Last updated`：
 
 ```bash
 python3 scripts/scan.py /path/to/extension-package
+python3 scripts/scan.py --skip-policy-check /path/to/extension-package
+python3 scripts/check_policy_updates.py --freshness
 ```
 
 Agent 应按 [SKILL.md](SKILL.md) 输出验证报告，包含总体结论、逐项证据和修复建议。
@@ -139,6 +141,7 @@ Agent 应按 [SKILL.md](SKILL.md) 输出验证报告，包含总体结论、逐�
 | 邮件里是颜色+元素编号 | 以官方编号为准 | [rejection-ids.md](rejection-ids.md) |
 | 想看合格/不合格报告长什么样 | — | [examples.md](examples.md) |
 | 静态扫包（缺文件、远程 script、明文 HTTP） | 仅线索，不是结论 | [scripts/scan.py](scripts/scan.py) |
+| 官方政策是否比本 skill 新 | 报告头 `CURRENT` / `STALE` / `UNKNOWN` | [SKILL.md](SKILL.md) 政策时效；`python3 scripts/check_policy_updates.py --freshness` |
 
 官方原文：
 
@@ -146,6 +149,30 @@ Agent 应按 [SKILL.md](SKILL.md) 输出验证报告，包含总体结论、逐�
 - [单页全文](https://developer.chrome.com/docs/webstore/program-policies/policies)
 - [拒审对照](https://developer.chrome.com/docs/webstore/troubleshooting)
 - [隐私字段](https://developer.chrome.com/docs/webstore/cws-dashboard-privacy)
+
+## 政策如何保持更新
+
+GitHub Actions 每周一拉取官方 `.md.txt` 快照（政策单页、拒审对照、隐私字段、相关 FAQ），和仓库里的 [`sources/`](sources/) 比较：
+
+- 没 diff：什么也不提交
+- 有 diff：更新快照并打开 PR（分支 `chore/policy-watch`）
+- **不自动改** `SKILL.md` / `checklist.md`。合并前要人看 diff，再改清单、bump `skill_version`
+
+维护者也可以在 Actions 里手动跑 `Policy watch`。
+
+本地跑预审或 `scan.py` 时，Agent / 脚本会：
+
+1. 读本 skill 的 `sources/manifest.json`（`policy_last_updated`、`skill_version`）
+2. 取官方单页的 `Last updated`
+3. 再对比 GitHub 上的 `skill_version`
+
+官方日期更新，或仓库里的 skill 版本更新，会在报告顶部提示用下面命令更新。GitHub Actions **不能**写进你电脑上的 Cursor/Claude/Codex skill 目录。
+
+```bash
+npx skills add shineforever/chrome-webstore-policies-skill --agent cursor --agent claude-code --agent codex
+```
+
+没网则标 `UNKNOWN`，继续用本地清单。
 
 ## 范围
 

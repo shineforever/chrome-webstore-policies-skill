@@ -8,6 +8,7 @@ Exit code is 0 even when findings exist, unless the path is invalid.
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -127,12 +128,40 @@ def scan_file(root: Path, path: Path) -> list[str]:
     return findings
 
 
-def main() -> int:
-    if len(sys.argv) != 2:
-        print("Usage: python3 scripts/scan.py /path/to/extension", file=sys.stderr)
-        return 2
+def print_policy_freshness() -> None:
+    if os.environ.get("CWS_SKIP_POLICY_CHECK") == "1":
+        print("# policy freshness")
+        print("status\tSKIPPED")
+        return
+    scripts_dir = Path(__file__).resolve().parent
+    if str(scripts_dir) not in sys.path:
+        sys.path.insert(0, str(scripts_dir))
+    try:
+        from check_policy_updates import print_freshness
 
-    root = Path(sys.argv[1]).expanduser().resolve()
+        print_freshness(timeout=8.0)
+    except Exception as exc:  # noqa: BLE001 — scan must still run offline
+        print("# policy freshness")
+        print(f"UNKNOWN\tpolicy freshness check failed\t{exc}")
+
+
+def parse_args(argv: list[str]) -> tuple[Path, bool]:
+    args = list(argv)
+    skip = False
+    if "--skip-policy-check" in args:
+        skip = True
+        args.remove("--skip-policy-check")
+    if len(args) != 1:
+        print(
+            "Usage: python3 scripts/scan.py [--skip-policy-check] /path/to/extension",
+            file=sys.stderr,
+        )
+        raise SystemExit(2)
+    return Path(args[0]).expanduser().resolve(), skip
+
+
+def main() -> int:
+    root, skip_freshness = parse_args(sys.argv[1:])
     if not root.exists():
         print(f"Path not found: {root}", file=sys.stderr)
         return 2
@@ -140,6 +169,9 @@ def main() -> int:
     manifest_path = find_manifest(root)
     print(f"# CWS static scan")
     print(f"root\t{root}")
+    if skip_freshness:
+        os.environ["CWS_SKIP_POLICY_CHECK"] = "1"
+    print_policy_freshness()
 
     if not manifest_path:
         print("BLOCKER\tno manifest.json")

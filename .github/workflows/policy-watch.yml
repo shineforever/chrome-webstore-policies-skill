@@ -1,0 +1,53 @@
+name: Policy watch
+
+on:
+  schedule:
+    # Weekly, Monday 00:17 UTC. Offset from midnight to reduce thundering herd.
+    - cron: "17 0 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: policy-watch
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test snapshot helpers
+        run: python3 scripts/test_check_policy_updates.py
+
+      - name: Fetch official policy sources
+        run: python3 scripts/check_policy_updates.py --update --report "$RUNNER_TEMP/policy-watch-report.md"
+
+      - name: Publish job summary
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/policy-watch-report.md" ]; then
+            cat "$RUNNER_TEMP/policy-watch-report.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Open or update review PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: refresh Chrome Web Store policy snapshots"
+          branch: chore/policy-watch
+          delete-branch: true
+          title: "chore: Chrome Web Store policy sources changed"
+          body-path: ${{ runner.temp }}/policy-watch-report.md
+          add-paths: |
+            sources
+            .cursor/skills/chrome-webstore-policy-review/sources/manifest.json

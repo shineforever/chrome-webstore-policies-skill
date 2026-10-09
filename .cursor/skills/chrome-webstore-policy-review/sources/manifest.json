@@ -1,0 +1,90 @@
+{
+  "skill_version": "1.1.0",
+  "policy_last_updated": "2025-05-22",
+  "remote_manifest_url": "https://raw.githubusercontent.com/shineforever/chrome-webstore-policies-skill/main/sources/manifest.json",
+  "install": "npx skills add shineforever/chrome-webstore-policies-skill --agent cursor --agent claude-code --agent codex",
+  "sources": [
+    {
+      "id": "policies",
+      "title": "Program Policies (single page)",
+      "html_url": "https://developer.chrome.com/docs/webstore/program-policies/policies",
+      "text_url": "https://developer.chrome.com/docs/webstore/program-policies/policies.md.txt",
+      "snapshot": "snapshots/policies.md.txt",
+      "last_updated": "2025-05-22",
+      "sha256": "c070f408f108fd9136501347411f753cfd01c9e31632fc75e93f0c38905f8585"
+    },
+    {
+      "id": "program-policies-index",
+      "title": "Program Policies index",
+      "html_url": "https://developer.chrome.com/docs/webstore/program-policies",
+      "text_url": "https://developer.chrome.com/docs/webstore/program-policies.md.txt",
+      "snapshot": "snapshots/program-policies-index.md.txt",
+      "last_updated": null,
+      "sha256": "d57cb6ac8755277d7ca5af65a37a409070526fba54367d9b350e1922b90317dc"
+    },
+    {
+      "id": "troubleshooting",
+      "title": "Troubleshooting / rejection IDs",
+      "html_url": "https://developer.chrome.com/docs/webstore/troubleshooting",
+      "text_url": "https://developer.chrome.com/docs/webstore/troubleshooting.md.txt",
+      "snapshot": "snapshots/troubleshooting.md.txt",
+      "last_updated": "2026-07-20",
+      "sha256": "04487b0250d9f03df3b6c90d0f1ec284764a2424378484ebe6df2ddb61fe5051"
+    },
+    {
+      "id": "cws-dashboard-privacy",
+      "title": "CWS Dashboard privacy fields",
+      "html_url": "https://developer.chrome.com/docs/webstore/cws-dashboard-privacy",
+      "text_url": "https://developer.chrome.com/docs/webstore/cws-dashboard-privacy.md.txt",
+      "snapshot": "snapshots/cws-dashboard-privacy.md.txt",
+      "last_updated": "2020-06-12",
+      "sha256": "3e5788f2eb73b52dc061e6bbeb2a148b736bec7fd13f681fab7c100c19cfc45f"
+    },
+    {
+      "id": "user-data-faq",
+      "title": "User Data FAQ",
+      "html_url": "https://developer.chrome.com/docs/webstore/program-policies/user-data-faq",
+      "text_url": "https://developer.chrome.com/docs/webstore/program-policies/user-data-faq.md.txt",
+      "snapshot": "snapshots/user-data-faq.md.txt",
+      "last_updated": "2016-04-23",
+      "sha256": "8571bfb437a53315a411b9d6211ff4934387d06bad926e26d49601b892dae500"
+    },
+    {
+      "id": "deceptive-installation-tactics-faq",
+      "title": "Deceptive Installation Tactics FAQ",
+      "html_url": "https://developer.chrome.com/docs/webstore/program-policies/deceptive-installation-tactics-faq",
+      "text_url": "https://developer.chrome.com/docs/webstore/program-policies/deceptive-installation-tactics-faq.md.txt",
+      "snapshot": "snapshots/deceptive-installation-tactics-faq.md.txt",
+      "last_updated": "2024-07-10",
+      "sha256": "6539849e70690d542649d8e8d010c4c415084198eb7140a846773b1c579f7206"
+    },
+    {
+      "id": "quality-guidelines-faq",
+      "title": "Quality Guidelines FAQ",
+      "html_url": "https://developer.chrome.com/docs/webstore/program-policies/quality-guidelines-faq",
+      "text_url": "https://developer.chrome.com/docs/webstore/program-policies/quality-guidelines-faq.md.txt",
+      "snapshot": "snapshots/quality-guidelines-faq.md.txt",
+      "last_updated": "2024-07-10",
+      "sha256": "448c5332184dc6961eb810d763a4ddad85f429b1e681d46b5b40ae5a11de5bdc"
+    },
+    {
+      "id": "spam-faq",
+      "title": "Spam FAQ",
+      "html_url": "https://developer.chrome.com/docs/webstore/program-policies/spam-faq",
+      "text_url": "https://developer.chrome.com/docs/webstore/program-policies/spam-faq.md.txt",
+      "snapshot": "snapshots/spam-faq.md.txt",
+      "last_updated": "2020-05-01",
+      "sha256": "a99edbd1d7530ed7152d95c753bb22bfa469bf27f1cd9afa0424a0095ac8bd79"
+    },
+    {
+      "id": "affiliate-ads-faq",
+      "title": "Affiliate Ads FAQ",
+      "html_url": "https://developer.chrome.com/docs/webstore/program-policies/affiliate-ads-faq",
+      "text_url": "https://developer.chrome.com/docs/webstore/program-policies/affiliate-ads-faq.md.txt",
+      "snapshot": "snapshots/affiliate-ads-faq.md.txt",
+      "last_updated": "2025-03-11",
+      "sha256": "40aacac0569d8dadcdd35e28b87005bca549f504499c4d32a2b47db7c8b827fc"
+    }
+  ],
+  "official_policy_last_updated": "2025-05-22"
+}

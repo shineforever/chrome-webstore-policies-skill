@@ -9,7 +9,25 @@ description: Use when reviewing a Chrome extension for Chrome Web Store submissi
 
 **核心原则：** 审阅范围覆盖整个用户体验——代码、商店页、隐私政策、Dashboard 字段、广告、落地页、安装流。任何一处与行为不一致，都可能被下架。
 
-官方政策可能更新。有网络时先打开下方来源，确认仍有效；冲突时以官方页面为准。本 skill 依据的单页政策 Last updated：`2025-05-22`。
+官方政策可能更新。冲突时以官方页面为准。本 skill 依据的单页政策 Last updated：`2025-05-22`（见同级 `sources/manifest.json` 的 `policy_last_updated`）。
+
+## 政策时效（有网先做）
+
+开始预审前先核对官方日期，**过期也继续审**，但必须在报告顶部标明。不要因为官方页打不开就停下。
+
+1. 读本 skill 同级 [`sources/manifest.json`](sources/manifest.json)：记下 `policy_last_updated`、`skill_version`。
+2. 打开 https://developer.chrome.com/docs/webstore/program-policies/policies ，取出 `Last updated YYYY-MM-DD`（或 `"dateModified"`）。
+3. 有网时再读 GitHub 上的 `sources/manifest.json`（URL 在本地 manifest 的 `remote_manifest_url`），比较 `skill_version`。
+4. 也可跑：`python3 scripts/check_policy_updates.py --freshness` 或 `python3 scripts/scan.py /path/to/extension`（扫描开头会打时效）。没网或失败：标 `UNKNOWN`，用本地清单继续。
+
+| 情况 | 报告里的时效 | 对用户说 |
+|------|----------------|----------|
+| 官方日期 = 本 skill 记录 | `CURRENT` | 正常审 |
+| 官方日期更新 | `STALE` | 清单可能过期；先更新 skill 再审更稳。继续审，但不要把结论说成最终。更新：`npx skills add shineforever/chrome-webstore-policies-skill --agent cursor --agent claude-code --agent codex` |
+| GitHub 上 `skill_version` 更新、官方日期没变 | `STALE`（skill 修补） | 建议更新 skill 后重跑 |
+| 没网 / 官方页失败 | `UNKNOWN` | 用本地清单，写明未核对官方日期 |
+
+仓库每周用 GitHub Actions 拉官方 `.md.txt` 快照；有 diff 会开 PR，**不会自动改本文件**。本地 Cursor 不会被远程推送覆盖。
 
 ## 官方来源
 
@@ -63,6 +81,7 @@ python3 scripts/scan.py /path/to/extension
 
 按这个顺序走，前面的 BLOCKER 未清不要宣称“可以提交”。
 
+0. **政策时效** — 按上一节核对官方 `Last updated`；`STALE` / `UNKNOWN` 写进报告头，然后继续
 1. **包与 Manifest** — 文件路径存在、大小写正确、MV3、无缺图标/脚本
 2. **代码可读 / 远程代码** — 无混淆；MV3 逻辑自包含；无远程 `<script>` / `eval(远程字符串)` / 远程命令解释器
 3. **单一目的** — 窄、好懂；不捆绑无关功能；NTP 不擅自改搜索
@@ -125,7 +144,9 @@ Chrome Apps 额外规则只在目标是 Chrome App 时检查，见 [checklist.md
 - 产品：
 - 版本 / Manifest：
 - 验证日期：
-- 政策参考：https://developer.chrome.com/docs/webstore/program-policies/policies （2025-05-22）
+- 政策参考：https://developer.chrome.com/docs/webstore/program-policies/policies
+- 政策时效：CURRENT | STALE | UNKNOWN
+- 本 skill 政策日期 / 官方 Last updated：2025-05-22 / （取出的日期）
 - 总体结论：PASS | CONDITIONAL | FAIL | INCOMPLETE
 - 阻塞项 / 风险项 / 未知项：0 / 0 / 0
 
