@@ -98,6 +98,20 @@ Agent 应按 [SKILL.md](SKILL.md) 输出验证报告，包含总体结论、逐�
 
 需要准备的材料见 [SKILL.md](SKILL.md)「开始前收集材料」。缺材料应标 `UNKNOWN`，不要当成通过。
 
+## 检测后长什么样
+
+Agent 会输出一份中文报告，政策名和拒审 ID 保留英文。下面两张是 [examples.md](examples.md) 里示例报告的效果（虚构产品，不是某个真实扩展的审核结果）。
+
+**不能提交（FAIL）**：有 BLOCKER 就不要上架。
+
+<img src="assets/report-fail.png" alt="FAIL 政策验证报告示例：远程代码、单一目的失败、未披露联盟 cookie" width="860">
+
+**可以提交（PASS）**：无阻塞项，仅有可提交前再收一收的 WARN。
+
+<img src="assets/report-pass.png" alt="PASS 政策验证报告示例：单一目的清楚，权限与披露对齐" width="860">
+
+完整 Markdown 原文见 [examples.md](examples.md)。
+
 ## 风险如何判断
 
 先给每条检查一个等级，再汇总成总体结论。完整规则在 [SKILL.md](SKILL.md)。

@@ -98,6 +98,20 @@ The agent should follow [SKILL.md](SKILL.md) and print a report with an overall 
 
 Materials to collect are listed in [SKILL.md](SKILL.md) under “开始前收集材料”. Missing materials should be `UNKNOWN`, not a pass.
 
+## What a review looks like
+
+The skill writes the report in Chinese for the developer, and keeps official policy names / rejection IDs in English. These two images are sample reports from [examples.md](examples.md) (fictional products, not a real store listing).
+
+**Do not submit (FAIL)** — any `BLOCKER` means stay out of the store.
+
+<img src="assets/report-fail.png" alt="Sample FAIL policy report: remote code, broken single purpose, undisclosed affiliate cookies" width="860">
+
+**Ready to submit (PASS)** — no blockers; only a WARN to tighten before upload.
+
+<img src="assets/report-pass.png" alt="Sample PASS policy report: narrow purpose, permissions aligned with disclosure" width="860">
+
+Full Markdown samples are in [examples.md](examples.md).
+
 ## How risk is judged
 
 Grade each check, then roll up to an overall result. Full rules live in [SKILL.md](SKILL.md).
