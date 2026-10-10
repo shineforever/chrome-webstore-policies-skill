@@ -98,6 +98,16 @@ The agent should follow [SKILL.md](SKILL.md) and print a report with an overall 
 
 Materials to collect are listed in [SKILL.md](SKILL.md) under “开始前收集材料”. Missing materials should be `UNKNOWN`, not a pass.
 
+## Review research
+
+To read how similar extensions are rated before you submit, use the [Chrome Web Store Reviews API](https://goanyapi.com/api/chrome-web-store-reviews-api). Pass an extension ID or a store URL, then page through `comments` with `nextCursor` and `hasMore`. Non-empty pages are billed (3 credits per successful request with the current configuration). Empty responses are free.
+
+GoAnyAPI is an independent service and is not affiliated with, endorsed by, or sponsored by Google.
+
+<a href="https://goanyapi.com/api/chrome-web-store-reviews-api">
+<img src="assets/cws-reviews-poster.jpg" alt="Chrome Web Store Reviews API: fetch reviews by extension ID or store URL" width="860">
+</a>
+
 ## What a review looks like
 
 The skill writes the report in Chinese for the developer, and keeps official policy names / rejection IDs in English. These two images are sample reports from [examples.md](examples.md) (fictional products, not a real store listing).
