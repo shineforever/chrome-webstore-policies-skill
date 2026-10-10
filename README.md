@@ -98,16 +98,6 @@ Agent 应按 [SKILL.md](SKILL.md) 输出验证报告，包含总体结论、逐�
 
 需要准备的材料见 [SKILL.md](SKILL.md)「开始前收集材料」。缺材料应标 `UNKNOWN`，不要当成通过。
 
-## 商店评论调研
-
-上架前想看同类扩展的真实评价，可以用 [Chrome Web Store Reviews API](https://goanyapi.com/api/chrome-web-store-reviews-api)。传入扩展 ID 或商店链接，按页取回 `comments`，再用 `nextCursor` 和 `hasMore` 翻页。非空结果按页计费（当前配置下每次成功请求 3 credits），空结果不计费。
-
-GoAnyAPI 是独立服务，与 Google 无隶属、背书或赞助关系。
-
-<a href="https://goanyapi.com/api/chrome-web-store-reviews-api">
-<img src="assets/cws-reviews-poster.jpg" alt="Chrome Web Store Reviews API：用扩展 ID 或商店链接按页拉取评论" width="860">
-</a>
-
 ## 检测后长什么样
 
 Agent 会输出一份中文报告，政策名和拒审 ID 保留英文。下面两张是 [examples.md](examples.md) 里示例报告的效果（虚构产品，不是某个真实扩展的审核结果）。
@@ -231,3 +221,13 @@ Skill 文档、脚本、GitHub Actions 和检查清单使用 [MIT License](LICEN
 微信扫码关注公众号。
 
 <img src="assets/wechat-official.jpg" alt="饭特稀公众号二维码" width="220">
+
+### 商店评论调研
+
+上架前想看同类扩展的真实评价，可以用 [Chrome Web Store Reviews API](https://goanyapi.com/api/chrome-web-store-reviews-api)。传入扩展 ID 或商店链接，按页取回 `comments`，再用 `nextCursor` 和 `hasMore` 翻页。非空结果按页计费（当前配置下每次成功请求 3 credits），空结果不计费。
+
+GoAnyAPI 是独立服务，与 Google 无隶属、背书或赞助关系。
+
+<a href="https://goanyapi.com/api/chrome-web-store-reviews-api">
+<img src="assets/cws-reviews-poster.jpg" alt="Chrome Web Store Reviews API：用扩展 ID 或商店链接按页拉取评论" width="860">
+</a>
