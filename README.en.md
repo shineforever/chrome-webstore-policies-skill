@@ -210,9 +210,7 @@ Maintained by [Fantexi](https://x.com/fantexi997). Follow [@fantexi997](https://
 
 ### Review research
 
-To read how similar extensions are rated before you submit, use the [Chrome Web Store Reviews API](https://goanyapi.com/api/chrome-web-store-reviews-api). Pass an extension ID or a store URL, then page through `comments` with `nextCursor` and `hasMore`. Non-empty pages are billed (3 credits per successful request with the current configuration). Empty responses are free.
-
-GoAnyAPI is an independent service and is not affiliated with, endorsed by, or sponsored by Google.
+Before you submit, use the [Chrome Web Store Reviews API](https://goanyapi.com/api/chrome-web-store-reviews-api) to see how people actually rate similar extensions. Pass an extension ID or a store URL to get each page of `comments`. Follow `nextCursor` while `hasMore` is true.
 
 <a href="https://goanyapi.com/api/chrome-web-store-reviews-api">
 <img src="assets/cws-reviews-poster.jpg" alt="Chrome Web Store Reviews API: fetch reviews by extension ID or store URL" width="860">

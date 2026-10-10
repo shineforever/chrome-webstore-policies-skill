@@ -224,9 +224,7 @@ Skill 文档、脚本、GitHub Actions 和检查清单使用 [MIT License](LICEN
 
 ### 商店评论调研
 
-上架前想看同类扩展的真实评价，可以用 [Chrome Web Store Reviews API](https://goanyapi.com/api/chrome-web-store-reviews-api)。传入扩展 ID 或商店链接，按页取回 `comments`，再用 `nextCursor` 和 `hasMore` 翻页。非空结果按页计费（当前配置下每次成功请求 3 credits），空结果不计费。
-
-GoAnyAPI 是独立服务，与 Google 无隶属、背书或赞助关系。
+上架前调研同类扩展，可以用 [Chrome Web Store Reviews API](https://goanyapi.com/api/chrome-web-store-reviews-api) 看用户实际怎么评价。传入扩展 ID 或商店链接，按页取回 `comments`；还有下一页时跟上 `nextCursor`，`hasMore` 表示能不能继续翻。
 
 <a href="https://goanyapi.com/api/chrome-web-store-reviews-api">
 <img src="assets/cws-reviews-poster.jpg" alt="Chrome Web Store Reviews API：用扩展 ID 或商店链接按页拉取评论" width="860">
